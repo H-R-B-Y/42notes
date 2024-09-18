@@ -143,11 +143,28 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "webpage-html-export:Export Vault to HTML": false
     }
   },
   "active": "8a51a328440b0a75",
   "lastOpenFiles": [
-    "Hello World..md"
+    "pages/lib/search-index.json",
+    "pages/lib/metadata.json",
+    "pages/lib/styles/main-styles.css",
+    "pages/lib/styles/obsidian.css",
+    "pages/lib/styles/global-variable-styles.css",
+    "pages/lib/styles",
+    "pages/lib/scripts/graph-data.js",
+    "pages/lib/media/favicon.png",
+    "pages/lib/scripts/minisearch.js",
+    "pages/lib/scripts/pixi.js",
+    "pages/lib/scripts/tinycolor.js",
+    "pages/lib/scripts/graph-render-worker.js",
+    "pages/lib/media/874d8b8e340f75575caa.svg",
+    "pages/lib/media/3d6c1bdc4d87cde4de67.svg",
+    "Hello World..md",
+    "2024-09-18.md",
+    "pages/Untitled.md"
   ]
 }
