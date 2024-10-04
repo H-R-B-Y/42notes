@@ -45,6 +45,12 @@
   "defaultMediaIcon": "lucide//file-image",
   "exportPath": "/home/hbreeze/Documents/notes/shared/42notes/docs",
   "filesToExport": [
-    []
+    [
+      "Evaluating Born2BeRoot.md",
+      "face.png",
+      "Hello World..md",
+      "index.md",
+      "test.md"
+    ]
   ]
 }

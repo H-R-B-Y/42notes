@@ -1,3 +1,89 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[42notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>42notes</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Wed, 18 Sep 2024 12:25:12 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Wed, 18 Sep 2024 12:25:12 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Hello World.]]></title><description><![CDATA[ 
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[42notes]]></title><description><![CDATA[Obsidian digital garden]]></description><link>http://github.com/dylang/node-rss</link><image><url>lib/media/favicon.png</url><title>42notes</title><link/></image><generator>Webpage HTML Export plugin for Obsidian</generator><lastBuildDate>Fri, 04 Oct 2024 05:36:58 GMT</lastBuildDate><atom:link href="lib/rss.xml" rel="self" type="application/rss+xml"/><pubDate>Fri, 04 Oct 2024 05:36:57 GMT</pubDate><ttl>60</ttl><dc:creator/><item><title><![CDATA[Evaluating Born2BeRoot]]></title><description><![CDATA[ 
+ <br><br>sudo systemctl status ufw<br><br>sudo systemctl status ssh<br>
+sudo systemctl status sshd<br>
+See above.<br><br>groups {username}<br>
+Will list the groups said user is a member of.<br><br>adduser {username}<br>
+Will create a new user and prompt for some basic information about the user.<br>
+Uses the skel folder to initialize the users home/{username} folder.<br><br>Check that user is actually effected by password policy:<br>sudo chage --list {username}
+Copy<br>PASS_MAX_DAYS 30 - Password must be reset after 30 days
+PASS_MIN_DAYS 2  - Password cannot be changed for 2 days once changed
+PASS_WARN_AGE 7  - Warn user after 7 days about password age
+Copy<br>The password age policy wont take effect for users that already exist, so the following commands can be used to set the age controls for those users:<br>chage -M {days}  :: the max password age
+chage -m {days}  :: the min password age 
+chage -W {days}  :: Warning days
+Copy<br>For the password character controls:<br>minlen=10				- Minimum length 10 chars
+ucredit=-1				- Uppercase Credit -1 ENSURE 1 UPPERCASE LETTER
+lcredit=-1 				- Lowercase Credit -1 ENSURE 1 LOWERCASE LETTER
+dcredit=-1 				- Digit Credit -1 ENSURE 1 UPPERCASE LETTER
+maxrepeat=3				- The maximum number of times a character can be repeated
+reject_username			- Username and password cannot be the same
+difok=7					- Atleast 7 characters different from last password
+enforce_for_root		- Applies to root password
+Copy<br>Then to enforce the new rules you will need to run:<br>passwd {username}
+Copy<br>To change the password for a user.<br><br>To create a new group<br>groupadd &lt;groupname&gt;
+Copy<br><br>usermod -aG {groupname} {username}<br><br>Easy way to check hostname: <br>hostnamectl status
+Copy<br><br>hostnamectl set-hostname {new hostname}
+reboot now
+Copy<br><br>df<br>
+or<br>
+lsblk<br><br>dpkg -l (lists installed packages)
+Piped into:
+grep "sudo"
+
+$ dpkg -l | grep sudo 
+Copy<br><br>sudo usermod -aG sudo {username}<br><br>Sudo (Super User do) allows users within a select group (or explicitly named in the config) to use the sudo command followed by any other command to execute the second command as if they had root privileges. <br><br>Defaults        secure_path
+Copy<br>Defaults        authfail_message
+Defaults        badpass_message
+Defaults        passprompt
+Copy<br>Defaults        logfile="/var/log....."
+Copy<br>Defaults		requiretty
+Copy<br><br>cd /var/log/sudo
+cat log &gt; a
+sudo {something}
+cat log &gt; b
+diff a b
+Copy<br><br>sudo systemctl status ufw<br><br>start an ssh session, update the rules to exclude ssh port, restart ufw, stop ssh session, try to reconnect to ssh session.<br>EVALUATOR SIDE:
+ssh {username}@{VM address} -p {ssh port}
+
+VMSIDE:
+ufw status numbered
+ufw delete {number}
+ufw deny {ssh port}
+systemctl restart ufw
+
+EVALUATOR SIDE:
+logout
+ssh {username}@{VM address} -p {ssh port}
+
+Copy<br><br>sudo ufw something something<br><br>sudo ufw allow {port number}<br>
+Adds a new rule to the UFW table.<br>need to run:<br>
+sudo systemctl restart ufw<br>
+for it to take effect.<br><br>sudo systemctl status sshd<br><br><br><br>sudo systemctl status sshd
+Copy<br>Will show you what ports the ssh service is listening on.<br>
+Alternatively:<br>cat /etc/ssh/sshd_config | grep "Port "
+Copy<br>check cron configuration:<br>sudo nano /etc/crontab
+Copy<br>or <br>crontab -e
+sudo crontab -e
+Copy<br><br>lsblk
+Copy<br>or<br>du
+Copy<br><br># for version info of current mariadb installed:
+mariadb --version
+
+# to see that wordpress is setup to use it:
+mariadb
+(mariadb) &gt; SHOW DATABASES;
+
+#you can now see the table `wpdb` (my wordpress database)
+(mariadb) &gt; EXIT;
+
+# then you can do:
+# to see the configured database name to use in the localhost database
+cat /var/www/html/wp-config.php | grep "DB_NAME"  
+Copy<br># to see that lighttpd is working:
+sudo systemctl status lighttpd
+Copy<br>To see wordpress working:<br>
+From local machine:<br>firefox http://localhost:{forwarded IP address}
+Copy<br><br><br>systemctl status fail2ban
+Copy]]></description><link>evaluating-born2beroot.html</link><guid isPermaLink="false">Evaluating Born2BeRoot.md</guid><pubDate>Fri, 04 Oct 2024 05:36:13 GMT</pubDate></item><item><title><![CDATA[Hello World.]]></title><description><![CDATA[ 
  ]]></description><link>hello-world..html</link><guid isPermaLink="false">Hello World..md</guid><pubDate>Wed, 18 Sep 2024 09:47:02 GMT</pubDate></item><item><title><![CDATA[Welcome!]]></title><description><![CDATA[ 
  <br><br>]]></description><link>index.html</link><guid isPermaLink="false">index.md</guid><pubDate>Wed, 18 Sep 2024 10:44:45 GMT</pubDate></item></channel></rss>
